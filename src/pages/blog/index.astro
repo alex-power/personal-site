@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { formatDistance } from 'date-fns';
+import { getCollection } from 'astro:content';
+import type { BlogPost } from '../../types';
+
+// Get all blog posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  console.log('Blog index - Post data:', data);
+  return import.meta.env.PROD ? !data.draft : true;
+}) as BlogPost[];
+
+console.log('Blog index - All posts:', allPosts);
+
+// Sort posts by date (newest first)
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+console.log('Blog index - Sorted posts:', sortedPosts);
+
+// Get all unique tags
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags))].sort();
+
+// Format the date to relative time
+function formatDate(date: Date): string {
+  return formatDistance(date, new Date(), { addSuffix: true });
+}
+
+const title = "Blog | Alex Power";
+const description = "Articles on technology, embedded finance, and enterprise architecture written by Alex Power.";
+---
+
+<Layout title={title} description={description}>
+  <div class="container mx-auto px-4 md:px-8 py-16">
+    <header class="mb-12">
+      <h1 class="text-3xl md:text-4xl font-heading font-bold mb-4 text-midnight-900 dark:text-white">
+        Blog
+      </h1>
+      <p class="text-xl text-midnight-700 dark:text-midnight-300 max-w-3xl">
+        Thoughts, tutorials, and insights on technology, embedded finance, and enterprise architecture.
+      </p>
+    </header>
+    
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Main content: Blog posts -->
+      <div class="lg:w-3/4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {sortedPosts.map((post, index) => (
+            <article class={`bg-white dark:bg-midnight-800 rounded-lg shadow-md overflow-hidden border border-midnight-100 dark:border-midnight-700 transition-all hover:shadow-lg group ${index === 0 ? "md:col-span-2" : ""}`}>
+              <a href={`/blog/${post.slug}`} class="block">
+                <div class={`${index === 0 ? "md:flex" : ""}`}>
+                  {post.data.image && (
+                    <div class={`${index === 0 ? "md:w-1/2" : ""} h-48 overflow-hidden`}>
+                      <img 
+                        src={post.data.image} 
+                        alt={post.data.title} 
+                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+                  <div class={`${index === 0 ? "md:w-1/2" : ""} p-6`}>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      {post.data.tags.map((tag: string) => (
+                        <span class="inline-block text-xs px-2 py-1 rounded-full bg-midnight-100 dark:bg-midnight-700 text-midnight-600 dark:text-midnight-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h2 class={`${index === 0 ? "text-2xl" : "text-xl"} font-heading font-bold mb-2 text-midnight-900 dark:text-white group-hover:text-coral-500 dark:group-hover:text-coral-400 transition-colors`}>
+                      {post.data.title}
+                    </h2>
+                    <p class="text-midnight-600 dark:text-midnight-300 mb-4 line-clamp-3">
+                      {post.data.excerpt}
+                    </p>
+                    <time class="text-sm text-midnight-500 dark:text-midnight-400">
+                      {formatDate(post.data.date)}
+                    </time>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Sidebar -->
+      <div class="lg:w-1/4">
+        <div class="sticky top-24">
+          <div class="bg-white dark:bg-midnight-800 rounded-lg shadow-md border border-midnight-100 dark:border-midnight-700 p-6 mb-8">
+            <h2 class="text-xl font-heading font-bold mb-4 text-midnight-900 dark:text-white">
+              Categories
+            </h2>
+            <div class="flex flex-wrap gap-2">
+              {allTags.map((tag: string) => (
+                <a 
+                  href={`/blog/tag/${tag.toLowerCase().replace(/ /g, '-')}`}
+                  class="inline-block text-sm px-3 py-1 rounded-full bg-midnight-100 dark:bg-midnight-700 text-midnight-700 dark:text-midnight-300 hover:bg-coral-100 hover:text-coral-700 dark:hover:bg-coral-800/30 dark:hover:text-coral-300 transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div class="bg-midnight-50 dark:bg-midnight-800/50 rounded-lg border border-midnight-100 dark:border-midnight-700 p-6">
+            <h2 class="text-xl font-heading font-bold mb-4 text-midnight-900 dark:text-white">
+              Newsletter
+            </h2>
+            <p class="text-midnight-700 dark:text-midnight-300 mb-4">
+              Subscribe to get notified about new articles and updates.
+            </p>
+            <form class="space-y-4">
+              <div>
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  class="w-full px-4 py-2 rounded-md border border-midnight-200 dark:border-midnight-700 bg-white dark:bg-midnight-800 text-midnight-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-coral-500"
+                  required
+                />
+              </div>
+              <button 
+                type="submit" 
+                class="w-full px-4 py-2 bg-coral-500 text-white rounded-md hover:bg-coral-600 transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

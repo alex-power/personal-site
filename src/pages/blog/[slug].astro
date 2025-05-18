@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import type { BlogPost } from '../../types';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props as { post: BlogPost };
+const { Content } = await post.render();
+
+const title = `${post.data.title} | Alex Power`;
+const description = post.data.excerpt;
+---
+
+<Layout title={title} description={description}>
+  <article class="container mx-auto px-4 md:px-8 py-16">
+    <header class="max-w-[728px] mx-auto mb-16">
+      <div class="flex flex-wrap gap-2 mb-6">
+        {post.data.tags.map((tag: string) => (
+          <span class="inline-block text-sm px-3 py-1 rounded-full bg-midnight-100 dark:bg-midnight-700 text-midnight-600 dark:text-midnight-300">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-5xl md:text-6xl font-heading font-bold mb-8 text-midnight-900 dark:text-white leading-tight tracking-tight">
+        {post.data.title}
+      </h1>
+      <div class="flex items-center text-midnight-600 dark:text-midnight-400 text-xl">
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+      </div>
+    </header>
+
+    {post.data.image && (
+      <div class="max-w-[728px] mx-auto mb-16">
+        <img 
+          src={post.data.image} 
+          alt={post.data.title}
+          class="w-full h-[400px] object-cover rounded-lg shadow-lg"
+        />
+        <p class="text-sm text-midnight-500 dark:text-midnight-400 mt-3 text-center">
+          {post.data.imageCaption || ''}
+        </p>
+      </div>
+    )}
+
+    <div class="max-w-[728px] mx-auto text-xl leading-relaxed text-midnight-700 dark:text-midnight-300">
+      <style>
+        :global(.blog-content h1) {
+          @apply text-5xl md:text-6xl font-bold mt-12 mb-6 text-midnight-900 dark:text-white leading-tight;
+        }
+        :global(.blog-content h2) {
+          @apply text-4xl md:text-5xl font-bold mt-10 mb-6 text-midnight-900 dark:text-white leading-tight;
+        }
+        :global(.blog-content h3) {
+          @apply text-3xl md:text-4xl font-semibold mt-8 mb-6 text-midnight-900 dark:text-white leading-tight;
+        }
+        :global(.blog-content h4) {
+          @apply text-2xl md:text-3xl font-semibold mt-8 mb-6 text-midnight-900 dark:text-white leading-tight;
+        }
+        :global(.blog-content p) {
+          @apply mb-6;
+        }
+        :global(.blog-content a) {
+          @apply text-coral-500 dark:text-coral-400 hover:text-coral-600 dark:hover:text-coral-300 underline;
+        }
+        :global(.blog-content ul), :global(.blog-content ol) {
+          @apply mb-6 pl-6 space-y-2;
+        }
+        :global(.blog-content li) {
+          @apply mb-2;
+        }
+        :global(.blog-content ol li) {
+          @apply list-decimal;
+        }
+        :global(.blog-content ul li) {
+          @apply list-disc;
+        }
+        :global(.blog-content blockquote) {
+          @apply my-6 pl-4 border-l-4 border-coral-500 italic text-midnight-600 dark:text-midnight-400;
+        }
+        :global(.blog-content pre) {
+          @apply my-6 p-4 rounded-lg bg-midnight-100 dark:bg-midnight-800 text-midnight-900 dark:text-white overflow-x-auto;
+          line-height: 1.2;
+        }
+        :global(.blog-content pre code) {
+          @apply p-0 bg-transparent text-base;
+          line-height: inherit;
+        }
+        :global(.blog-content code:not(pre code)) {
+          @apply px-1.5 py-0.5 rounded bg-midnight-100 dark:bg-midnight-800 text-midnight-900 dark:text-white text-base;
+        }
+        :global(.blog-content img) {
+          @apply my-6 rounded-lg shadow-lg;
+        }
+      </style>
+      <div class="blog-content">
+        <Content />
+      </div>
+    </div>
+
+    <footer class="max-w-[728px] mx-auto mt-16 pt-8 border-t border-midnight-200 dark:border-midnight-700">
+      <div class="flex flex-wrap gap-2">
+        {post.data.tags.map((tag: string) => (
+          <a 
+            href={`/blog/tag/${tag.toLowerCase().replace(/ /g, '-')}`}
+            class="inline-block text-sm px-3 py-1 rounded-full bg-midnight-100 dark:bg-midnight-700 text-midnight-600 dark:text-midnight-300 hover:bg-coral-100 hover:text-coral-700 dark:hover:bg-coral-800/30 dark:hover:text-coral-300 transition-colors"
+          >
+            {tag}
+          </a>
+        ))}
+      </div>
+    </footer>
+  </article>
+</Layout>

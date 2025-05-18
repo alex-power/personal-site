@@ -1,0 +1,74 @@
+---
+import { formatDistance } from 'date-fns';
+import { getCollection } from 'astro:content';
+import type { BlogPost } from '../types';
+
+// Get all blog posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  console.log('Post data:', data);
+  return import.meta.env.PROD ? !data.draft : true;
+}) as BlogPost[];
+
+console.log('All posts:', allPosts);
+
+// Sort posts by date (newest first) and take the first 3
+const featuredPosts = allPosts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+console.log('Featured posts:', featuredPosts);
+
+// Format the date to relative time
+function formatDate(date: Date): string {
+  return formatDistance(date, new Date(), { addSuffix: true });
+}
+---
+
+<section class="py-16">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="flex justify-between items-baseline mb-8">
+      <h2 class="text-2xl md:text-3xl font-heading font-bold text-midnight-900 dark:text-white">
+        Featured Articles
+      </h2>
+      <a href="/blog" class="text-coral-500 hover:text-coral-600 dark:text-coral-400 dark:hover:text-coral-300 font-medium">
+        View all
+      </a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {featuredPosts.map((post) => (
+        <article class="bg-white dark:bg-midnight-800 rounded-lg shadow-md overflow-hidden border border-midnight-100 dark:border-midnight-700 transition-all hover:shadow-lg group animate-fade-in">
+          <a href={`/blog/${post.slug}`} class="block">
+            {post.data.image && (
+              <div class="h-48 overflow-hidden">
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.title} 
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              <div class="flex gap-2 mb-3">
+                {post.data.tags.slice(0, 2).map(tag => (
+                  <span class="inline-block text-xs px-2 py-1 rounded-full bg-midnight-100 dark:bg-midnight-700 text-midnight-600 dark:text-midnight-300">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-xl font-heading font-bold mb-2 text-midnight-900 dark:text-white group-hover:text-coral-500 dark:group-hover:text-coral-400 transition-colors">
+                {post.data.title}
+              </h3>
+              <p class="text-midnight-600 dark:text-midnight-300 mb-4 line-clamp-2">
+                {post.data.excerpt}
+              </p>
+              <time class="text-sm text-midnight-500 dark:text-midnight-400">
+                {formatDate(post.data.date)}
+              </time>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

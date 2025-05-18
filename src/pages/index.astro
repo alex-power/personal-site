@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeaturedPosts from '../components/FeaturedPosts.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+
+const title = "Alex Power | Technology Leader & Strategic Consultant";
+const description = "Personal website of Alex Power, a technology leader and strategic consultant with expertise in embedded finance, product strategy, and enterprise architecture. Combining technical excellence with business acumen to drive transformative solutions.";
+---
+
+<Layout title={title} description={description}>
+  <Hero />
+  <FeaturedPosts />
+  <About />
+  <Contact />
+</Layout>

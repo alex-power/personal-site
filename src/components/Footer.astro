@@ -1,0 +1,44 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/alexpower' },
+  { name: 'Twitter', url: 'https://twitter.com/alexpower' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/alexpower' },
+];
+---
+
+<footer class="bg-midnight-50 dark:bg-midnight-900 border-t border-midnight-200 dark:border-midnight-800 py-8 mt-16 transition-colors duration-300">
+  <div class="container mx-auto px-4 md:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+      <div class="text-center md:text-left">
+        <a href="/" class="text-xl font-heading font-bold text-midnight-900 dark:text-white">
+          <span class="text-coral-500 dark:text-coral-400">Alex</span> Power
+        </a>
+        <p class="mt-2 text-midnight-600 dark:text-midnight-300 max-w-md">
+          Software developer, writer, and tech enthusiast building digital experiences that matter.
+        </p>
+      </div>
+      
+      <div class="flex flex-col items-center md:items-end gap-4">
+        <div class="flex items-center gap-4">
+          {socialLinks.map(link => (
+            <a 
+              href={link.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-midnight-700 dark:text-midnight-300 hover:text-coral-500 dark:hover:text-coral-400 transition-colors"
+              aria-label={link.name}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+        
+        <p class="text-sm text-midnight-600 dark:text-midnight-400">
+          &copy; {currentYear} Alex Power. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,147 @@
+---
+import background from '../assets/background.svg';
+---
+
+<div id="container">
+	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<main>
+		<section id="hero">
+			<h1>
+				Alex Power
+				<span class="subtitle">Client Solutions Architect & Product Strategy Consultant</span>
+			</h1>
+			<p class="description">
+				Specializing in embedded finance solutions and enterprise architecture at a Global Systemically Important Bank (GSIB)
+			</p>
+			<section id="links">
+				<a class="button" href="/about">Learn More</a>
+				<a class="button secondary" href="/contact">Get in Touch</a>
+			</section>
+		</section>
+	</main>
+</div>
+
+<style>
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+	}
+
+	#container {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		height: 100%;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	#hero {
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+		max-width: 800px;
+	}
+
+	h1 {
+		font-size: 48px;
+		font-weight: bold;
+		margin: 0;
+		color: #111827;
+		line-height: 1.2;
+	}
+
+	.subtitle {
+		display: block;
+		font-size: 24px;
+		font-weight: normal;
+		color: #4b5563;
+		margin-top: 0.5em;
+	}
+
+	.description {
+		font-size: 20px;
+		color: #4b5563;
+		margin: 1.5em 0;
+		line-height: 1.5;
+	}
+
+	#links {
+		display: flex;
+		gap: 16px;
+		margin-top: 2em;
+	}
+
+	#links a {
+		display: inline-flex;
+		align-items: center;
+		padding: 12px 24px;
+		color: white;
+		text-decoration: none;
+		border-radius: 8px;
+		font-weight: 500;
+		transition: all 0.2s;
+	}
+
+	#links a.button {
+		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	#links a.button:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	#links a.button.secondary {
+		background: white;
+		color: #111827;
+		border: 1px solid #e5e7eb;
+	}
+
+	#links a.button.secondary:hover {
+		background: #f9fafb;
+	}
+
+	@media screen and (max-width: 768px) {
+		#container {
+			display: flex;
+			flex-direction: column;
+		}
+
+		#hero {
+			display: block;
+			padding-top: 10%;
+		}
+
+		h1 {
+			font-size: 36px;
+		}
+
+		.subtitle {
+			font-size: 20px;
+		}
+
+		.description {
+			font-size: 18px;
+		}
+
+		#links {
+			flex-wrap: wrap;
+		}
+
+		#links a {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+</style>
