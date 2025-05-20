@@ -108,10 +108,11 @@ const description = "Articles on technology, embedded finance, and enterprise ar
             <p class="text-midnight-700 dark:text-midnight-300 mb-4">
               Subscribe to get notified about new articles and updates.
             </p>
-            <form class="space-y-4">
+            <form id="subscribe-form" class="space-y-4">
               <div>
                 <input 
                   type="email" 
+                  id="email"
                   placeholder="Your email address" 
                   class="w-full px-4 py-2 rounded-md border border-midnight-200 dark:border-midnight-700 bg-white dark:bg-midnight-800 text-midnight-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
@@ -123,6 +124,7 @@ const description = "Articles on technology, embedded finance, and enterprise ar
               >
                 Subscribe
               </button>
+              <div id="form-message" class="text-sm mt-2 hidden"></div>
             </form>
           </div>
         </div>
@@ -130,3 +132,43 @@ const description = "Articles on technology, embedded finance, and enterprise ar
     </div>
   </div>
 </Layout>
+
+<script>
+  const form = document.getElementById('subscribe-form') as HTMLFormElement;
+  const messageDiv = document.getElementById('form-message');
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    
+    // Disable the submit button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Subscribing...';
+    
+    try {
+      // Send the request
+      const response = await fetch('https://script.google.com/macros/s/AKfycbw2UHGvOPTDvJRUgZvbrgqLHOZoxi1Uzy6-TQydz31Cm-c03sxsbqu56DyDJJPwCI2x/exec', {
+        method: 'POST',
+        body: new URLSearchParams({
+          'email': email
+        }),
+        mode: 'no-cors'
+      });
+      
+      messageDiv!.textContent = 'Thanks for subscribing!';
+      messageDiv!.classList.remove('hidden', 'text-red-500');
+      messageDiv!.classList.add('text-green-500');
+      form.reset();
+    } catch (error) {
+      messageDiv!.textContent = 'Something went wrong. Please try again.';
+      messageDiv!.classList.remove('hidden', 'text-green-500');
+      messageDiv!.classList.add('text-red-500');
+    } finally {
+      // Re-enable the submit button
+      submitButton.disabled = false;
+      submitButton.textContent = 'Subscribe';
+    }
+  });
+</script>
