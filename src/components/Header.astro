@@ -13,8 +13,8 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/90 dark:bg-midnight-950/90 border-b border-midnight-200 dark:border-midnight-800 transition-colors duration-300">
   <div class="container mx-auto py-4 px-4 md:px-8 flex items-center justify-between">
-    <a href="/" class="text-xl font-heading font-bold text-midnight-900 dark:text-white hover:text-coral-500 dark:hover:text-coral-400 transition-colors">
-      <span class="text-coral-500 dark:text-coral-400">Alex</span> Power
+    <a href="/" class="text-xl font-heading font-bold text-midnight-900 dark:text-white hover:text-blue-400 dark:hover:text-blue-300 transition-colors">
+      <span class="text-blue-400 dark:text-blue-300">Alex</span> Power
     </a>
     
     <div class="flex items-center gap-4">
@@ -30,10 +30,10 @@ const currentPath = pathname.slice(1); // remove the first "/"
         {navItems.map(item => (
           <a 
             href={item.href} 
-            class={`font-medium hover:text-coral-500 dark:hover:text-coral-400 transition-colors ${
+            class={`font-medium hover:text-blue-400 dark:hover:text-blue-300 transition-colors ${
               (currentPath === '' && item.href === '/') || 
               (currentPath !== '' && item.href !== '/' && currentPath.startsWith(item.href.slice(1))) 
-                ? 'text-coral-500 dark:text-coral-400' 
+                ? 'text-blue-400 dark:text-blue-300' 
                 : 'text-midnight-800 dark:text-midnight-200'
             }`}
           >
@@ -43,7 +43,7 @@ const currentPath = pathname.slice(1); // remove the first "/"
       </nav>
       
       <!-- Theme toggle button -->
-      <button id="theme-toggle" class="p-2 text-midnight-900 dark:text-white hover:text-coral-500 dark:hover:text-coral-400 transition-colors" aria-label="Toggle Theme">
+      <button id="theme-toggle" class="p-2 text-midnight-900 dark:text-white hover:text-blue-400 dark:hover:text-blue-300 transition-colors" aria-label="Toggle Theme">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden dark:block">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
         </svg>
@@ -66,10 +66,10 @@ const currentPath = pathname.slice(1); // remove the first "/"
       {navItems.map(item => (
         <a 
           href={item.href} 
-          class={`font-medium hover:text-coral-500 dark:hover:text-coral-400 transition-colors ${
+          class={`font-medium hover:text-blue-400 dark:hover:text-blue-300 transition-colors ${
             (currentPath === '' && item.href === '/') || 
             (currentPath !== '' && item.href !== '/' && currentPath.startsWith(item.href.slice(1))) 
-              ? 'text-coral-500 dark:text-coral-400' 
+              ? 'text-blue-400 dark:text-blue-300' 
               : 'text-midnight-800 dark:text-midnight-200'
           }`}
         >
