@@ -1,0 +1,122 @@
+Business-minded engineering architect and team leader with a specialization in financial
+technology. As an architect, I have designed and delivered delivered critical technology for
+the payments and markets businesses of my clients. Experienced in developing both junior
+devs into senior, and senior into leads. Hands-on experience designing and building
+distributed systems, domain driven cloud micro-services, and full-stack applications to
+deliver products and while advancing the strategy of the technology organization.
+Work History
+Associate - Team Lead, Galatea Associates, 6/2022 – Current
+ Lead a team of 8 developers and architects in support of new Embedded Finance and
+Banking-as-a-Service products at a leading global banking firm. Responsible for delivery
+on consulting contract valued at $3.5mm over 18 months.
+ Design Authority for Embedded Finance technology stack which allowed marketplace
+platforms to enable financial capabilities for their marketplace sellers including FDICinsured accounts, payments, and KYC capabilities via technology integration with a
+Global Systemically Important Bank (GSIB).
+ Pioneered futuristic client-facing REST API specifications for clients applicable across
+several product lines. Defined processes for keeping specifications up to date and in
+sync with code. Evangelized adoption of API best practices across product management
+and technology to produce a first-class developer experience.
+ Collaborated across product and engineering to produce extensible application
+architectures that support payments and banking products in production while
+implementing the firm’s technology strategy, resulting in significantly improved delivery
+timelines for new products and features using our architecture.
+ Defined data models and Kafka integrations to enable loosely-coupled, resilient,
+distributed architecture. Kept a data catalog of logical data models used to implement
+and maintain physical data models in Oracle RDBMS. Provided data to data lake via ETL
+and existing Kafka topics to allow data engineering and product to create internal
+dashboards and client-facing reporting capabilites.
+ Provided technology implementation support for Fortune 100 marketplace clients of
+Embedded Finance program by offering technical expertise and architecture direction to
+clients and client relationship managers, resulting in the successful delivery of
+necessary features and a completed integration driving 5mm+ yearly revenue.
+ Mentored senior developers to become sub-team managers while scaling overall team
+velocity by increasing individual ownership of sub-projects and ensuring individual
+development of each team member.
+ Lead development and architecture of cross-functional integration to support pay-byemail functionality for marketplace sellers to pay their suppliers without sharing their
+bank information. Formed the groundwork for future integration between internal
+applications to offer multi-product capabilities via a single coherent API suite.
+ Lead development and architecture of Java distributed reverse proxy supporting clientfacing API workloads by enforcing routing, authentication, and network architecture
+segregation across 60+ low-latency APIs.
+Associate - Software Architect, Galatea Associates, 10/2020 – 6/2022
+ Translated product requirements into system architectures that went on to be
+implemented by a cross-organizational team including over 100 developers
+implementing bank accounts, payments, account & entity validations, debit cards,
+know-your-customer, AML, fraud controls, and more.
+ Supported development, architecture, and deployment of React.js Hosted UI for
+embedded finance clients to do online KYC, manage their banking details and accounts,
+initiate payments, and engage support. Pioneered integration with new internal identity
+provider to provide superior security and login experience for clients.
+ Lead development of automated onboarding and online know-your-customer (KYC)
+service capable of 2-minute STP client due diligence, customer creation, and user
+identity setup leveraging Java Spring Boot, REST APIs, Oracle DB, Kafka, and
+Contact
+Address
+St. Petersburg, FL 33713
+Phone
+727-686-7290
+E-mail
+powera.dev@outlook.com
+LinkedIn
+https://www.linkedin.com/in/alexpower-a8963291
+Personal Blog
+https://www.alexpower.me
+Skills
+Leadership and Mentorship
+People Management
+Software Architecture
+Cross-team collaboration
+Domain Driven Design
+Relational Data Modeling
+REST API Design and Development
+Java, Python, SQL, .Net
+OAuth2.0, Open Policy Agent, Rolebased authorization
+Kafka, Distributed Parallel
+Processing, Protobuf, ETL
+Distributed Cloud Microservices
+Kubernetes, Linux, DevOps,
+Jenkins, CI/CD
+Spring Boot, React.js
+Webhooks, Event Sourcing
+Splunk, ElasticSearch, Dynatrace
+Education
+Bachelor of Science: Computer
+Engineering
+University of Central Florida -
+Orlando, FL
+3.49 Major GPA
+Alex Power
+Architect and Team Lead
+Kubernetes.
+ Designed payment rail integration data flows leveraging AMPS, Kafka, protobuf and
+specified flows for back-end payment processing for traditional, card, and digital
+payments.
+Associate - Software Engineer, Galatea Associates, 1/2018 – 10/2020
+ Developed and launched suite of 4 Java Spring micro-services which generate and send
+a twice-daily investment report detailing financial asset valuations, transactions, and
+settlement status for hedge fund clients across thousands of holdings.
+ Proposed design and built orchestration process that leveraged multi-threading,
+workload sharding across microservices, and orchestration to reduce report generation
+process from 1 hour to 10 minutes. Tackled memory issues by replacing inefficient heap
+allocated maps with custom built array objects that supported string interning and
+ultimately reduced micro-service memory footprint by 80%.
+ Managed and maintained Jenkins configuration for continuous integration and
+automated deployment of micro-services suite. Implemented logging patterns for log
+delivery into ElasticSearch for analysis. Leveraged logs to analyze performance of
+aforementioned ETL process.
+ Lead development of a cash booking application which records cash flows for Tri-party
+OTC and ETD trades for hedge fund clients. 10-month turnaround from requirements to
+production with 95%+ test coverage by leveraging test-driven development (TDD).
+ Developed a high-volume distributed message processor for calculating valued
+holdings for client reporting across 1000s of assets and 100,000+ holdings leveraging
+AMPS event bus and protobuf for serialization and de-serialization. Advocated for
+system design and data model to including caching layer with Hazelcast entry
+processors.
+ Implemented new features for client's strategic low-latency inventory reporting RESTful
+API utilized by risk and financing desks, leveraging in-memory distributed caching
+technology Oracle Coherence.
+Programmer Analyst I, FIS Global, 8/2015 – 1/2018
+ Resolved over 20 client issues, including 5 critical client care cases in Bankway multifunction banking application.
+ Designed and reconstructed 15 widgets to visually depict more than 30 data types.
+ Developed an internal dev ops release management tool with C# .NET and Windows
+Forms, reducing release time from 4 weeks to 2.
+.

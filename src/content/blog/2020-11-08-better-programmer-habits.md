@@ -14,7 +14,7 @@ In my first post-collegiate job, I was thrown into a whirlwind of new technologi
 Eventually, I began to settle into the new role. I knew what to expect from daily meetings and could complete a change (with tests!) all on my own. The initial boost of new [skills](https://dev.to/javinpaul/11-essential-skills-software-developers-should-learn-in-2020-1bio) to learn when becoming a professional started to wear off. I started to wonder, is there all there is? Continually chasing my proverbial tail trying to be "up to date" on the latest tech?
 
 I came to my mentor with one question: "How do I keep growing?" I fully expected him to tell me to learn a new technology or work more hours. Instead, I received **2 simple, actionable habits** that had nothing to do with technology. Since then, my career trajectory has taken off like a rocket.
-
+ 
 ### Over Deliver
 
 I completed my code changes slightly ahead of schedule and with a high level of quality. I practiced the [Clean Code](https://medium.com/javarevisited/clean-code-a-must-read-coding-book-for-programmers-9dc80494d27c) and was always seeking feedback. My manager evaluated me positively for my performance, but not exceptionally. I felt ready to grow, but my manager didn't seem to share that feeling. I was frustrated by the humdrum day to day work, and I was ready for more. Why didn't my manager ask me to take on new, exciting projects? What was I missing?
